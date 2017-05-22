@@ -50,8 +50,15 @@ fi
 
 TEST_GROUP="${TEST_GROUP}"
 if [ -z "${TEST_GROUP}" ]; then
-   TEST_GROUP="smoke-tests"
+   TEST_GROUP="smoke"
 fi
+
+TEST_STRING="${TEST_STRING}"
+if [ -z "${TEST_STRING}" ]; then
+   TEST_STRING="tests"
+fi
+
+TEST_NODEINDEX="${TEST_NODEINDEX}"
 
 execWithTimeout() {
   set +e
@@ -221,9 +228,10 @@ runTests() {
          echo "Test FIT failed running deploy/rackhd_stack_init.py"
          exit 1
      fi
-     python run_tests.py -test tests -group smoke -stack vagrant -port 9090 -v 9 -xunit
+#     python run_tests.py -test ${TEST_STRING} -group ${TEST_GROUP} ${TEST_NODEINDEX} -stack vagrant -port 9090 -v 9 -xunit
+     python run_tests.py -test ${TEST_STRING} ${TEST_NODEINDEX} -stack vagrant -port 9090 -v 9 -xunit
      if [ $? -ne 0 ]; then
-         echo "Test FIT failed running smoke test"
+         echo "Test FIT failed running " + ${TEST_STRING} + "-" + ${TEST_GROUP}
          exit 1
      fi
      mkdir -p ${WORKSPACE}/xunit-reports
