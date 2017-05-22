@@ -83,6 +83,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           service isc-dhcp-server start
           service rsyslog stop
           sudo service mongodb restart
+          echo "=====  Config file begin ====="
+          cat /opt/monorail/config.json
+          echo "=====  Config file end ====="
           echo manual | sudo tee /etc/init/rsyslog.override
           if [ "#{ENV['MULTI']}" ]; then
             pm2 logs > /home/vagrant/log/build/vagrant.log &
