@@ -49,13 +49,8 @@ if [ -z "${VCOMPUTE}" ]; then
 fi
 
 TEST_GROUP="${TEST_GROUP}"
-if [ -z "${TEST_GROUP}" && "$RUN_CIT_TEST" == true ]; then
+if [ -z "${TEST_GROUP}" ]; then
    TEST_GROUP="smoke-tests"
-fi
-
-TEST_STRING="${TEST_STRING}"
-if [ -z "${TEST_STRING}" ]; then
-   TEST_STRING="tests"
 fi
 
 execWithTimeout() {
@@ -226,7 +221,7 @@ runTests() {
          echo "Test FIT failed running deploy/rackhd_stack_init.py"
          exit 1
      fi
-     python run_tests.py -test ${TEST_STRING} ${TEST_GROUP} ${TEST_NODEINDEX} ${TEST_PAYLOAD} -stack vagrant -port 9090 -v 4 -xunit
+     python run_tests.py ${TEST_STRING} ${TEST_NODEINDEX} -stack vagrant -port 9090 -v 4 -xunit
      if [ $? -ne 0 ]; then
          echo "Test FIT failed running " + ${TEST_STRING} + "-" + ${TEST_GROUP}
          exit 1
