@@ -226,7 +226,7 @@ runTests() {
          echo "Test FIT failed running deploy/rackhd_stack_init.py"
          exit 1
      fi
-     python run_tests.py -test ${TEST_STRING} ${TEST_GROUP} ${TEST_NODEINDEX} ${TEST_PAYLOAD} -stack vagrant -port 9090 -v 9 -xunit
+     python run_tests.py -test ${TEST_STRING} ${TEST_GROUP} ${TEST_NODEINDEX} ${TEST_PAYLOAD} -stack vagrant -port 9090 -v 4 -xunit
      if [ $? -ne 0 ]; then
          echo "Test FIT failed running " + ${TEST_STRING} + "-" + ${TEST_GROUP}
          exit 1
