@@ -53,11 +53,16 @@ TEST_GROUP="${TEST_GROUP}"
 if [ -z "${TEST_GROUP}" && "$RUN_CIT_TEST" == true ]; then
    TEST_GROUP="smoke-tests"
 fi
+if [ "${TEST_GROUP}" == "null" && "$RUN_FIT_TEST" == true ]; then
+   TEST_GROUP = ""
+fi
+
 
 TEST_STRING="${TEST_STRING}"
 if [ -z "${TEST_STRING}" ]; then
    TEST_STRING="tests"
 fi
+
 
 execWithTimeout() {
   set +e
