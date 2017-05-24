@@ -241,7 +241,7 @@ runTests() {
          echo "Test FIT failed running deploy/rackhd_stack_init.py"
          exit 1
      fi
-     python run_tests.py ${TEST_STRING} ${TEST_NODEINDEX} -stack vagrant -port 9090 -v 4 -xunit
+     python run_tests.py ${TEST_GROUP} ${TEST_NODEINDEX} -stack vagrant -port 9090 -v 4 -xunit
      if [ $? -ne 0 ]; then
          echo "Test FIT failed running smoke test"
          exit 1
