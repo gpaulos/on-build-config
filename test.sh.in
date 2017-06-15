@@ -272,7 +272,11 @@ runTests() {
              tstack="-stack vagrant_ucs"
          fi
      done
-     python run_tests.py -test deploy/rackhd_stack_init.py ${tstack} -xunit
+     if [ ${LABEL} == "os_install" ]; then
+         python run_tests.py -test util/apply_obm_settings.py ${tstack} -xunit
+     else
+         python run_tests.py -test deploy/rackhd_stack_init.py ${tstack} -xunit
+     fi
      if [ $? -ne 0 ]; then
          echo "Test FIT failed running deploy/rackhd_stack_init.py"
          exit 1

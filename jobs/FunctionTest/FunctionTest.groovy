@@ -87,6 +87,7 @@ def functionTest(String test_name, String label_name, String TEST_GROUP, Boolean
                         "TEST_TYPE=$test_type",
                         "TEST_STACK=$test_stack",
                         "EXTRA_HW=$extra_hw",
+                        "LABEL=$label_name",
                         "KEEP_FAILURE_ENV=${env.KEEP_FAILURE_ENV}",
                         "KEEP_MINUTES=${env.KEEP_MINUTES}"]
                     ){
