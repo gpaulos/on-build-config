@@ -229,7 +229,7 @@ runTests() {
          fi
      done
      if [ ${LABEL} == "os_install" ]; then
-         python run_tests.py -test util/load_sku_packs.py ${tstack} -xunit
+         python run_tests.py -test deploy/rackhd_stack_init.py:rackhd_stack_init.test03_preload_default_sku ${tstack} -xunit
          python run_tests.py -test util/apply_obm_settings.py ${tstack} -xunit
      else
          python run_tests.py -test deploy/rackhd_stack_init.py ${tstack} -xunit
